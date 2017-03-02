@@ -221,8 +221,12 @@ angular.module('dibari.angular-ellipsis', [])
 				/**
 				*	Execute ellipsis truncate when element becomes visible
 				*/
-				scope.$watch(function() { return element[0].offsetWidth + ':' + element[0].offsetHeight }, function() {
+				scope.$watch(function() { return element[0].offsetWidth != 0 && element[0].offsetHeight != 0 }, function() {
 					asyncDigestDebounced.add(buildEllipsis);
+				});
+
+				new ResizeSensor(element.parent(), function() {
+			    asyncDigestDebounced.add(buildEllipsis);
 				});
 
 				function checkWindowForRebuild() {
