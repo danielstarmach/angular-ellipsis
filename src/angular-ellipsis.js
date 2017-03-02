@@ -114,7 +114,7 @@ angular.module('dibari.angular-ellipsis', [])
 						}
 
 						if (_isDefined(attributes.ellipsisFallbackFontSize) && isOverflowed(element)) {
-							element.css('font-size',attributes.ellipsisFallbackFontSize);	
+							element.css('font-size',attributes.ellipsisFallbackFontSize);
 						}
 
 						// If text has overflow
@@ -221,7 +221,7 @@ angular.module('dibari.angular-ellipsis', [])
 				/**
 				*	Execute ellipsis truncate when element becomes visible
 				*/
-				scope.$watch(function() { return element[0].offsetWidth != 0 && element[0].offsetHeight != 0 }, function() {
+				scope.$watch(function() { return element[0].offsetWidth + ':' + element[0].offsetHeight }, function() {
 					asyncDigestDebounced.add(buildEllipsis);
 				});
 
